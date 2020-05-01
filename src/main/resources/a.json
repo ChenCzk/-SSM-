@@ -1,0 +1,49 @@
+{
+  "route": {
+    "rid": 1,
+    "rname": "【旅展 半价特惠 重走丝路•漫游宁夏 双飞4天】银川西部影视城 穆民新村 中卫沙坡头【品美酒 回族学唱花儿 感悟民俗】",
+    "price": 999,
+    "routeIntroduce": "走进【宁夏沙坡头】，感受西北大漠风情、体会“大漠孤烟直，长河落日圆”的塞上风光！",
+    "rflag": "1",
+    "rdate": null,
+    "isThemeTour": "2018-02-09 01:13:16",
+    "count": 0,
+    "cid": 5,
+    "rimage": "img/product/small/m304b69a4c8328f7d6b8d5dadef020fe07.jpg",
+    "sid": 1,
+    "sourceId": "23677",
+    "category": null,
+    "seller": {
+      "sid": 1,
+      "sname": "黑马程序员",
+      "consphone": "12345678901",
+      "address": "传智播客javaEE学院"
+    },
+    "routeImgList": [
+      {
+        "rgid": 1,
+        "rid": 1,
+        "bigPic": "img/product/size4/m421d66d4446940b1c80a0092c91e75184.jpg",
+        "smallPic": "img/product/size2/m221d66d4446940b1c80a0092c91e75184.jpg"
+      },
+      {
+        "rgid": 2,
+        "rid": 1,
+        "bigPic": "img/product/size4/m4227f0cde1b021a77c56c1c18a8f2e7fd.jpg",
+        "smallPic": "img/product/size2/m2227f0cde1b021a77c56c1c18a8f2e7fd.jpg"
+      },
+      {
+        "rgid": 3,
+        "rid": 1,
+        "bigPic": "img/product/size4/m412cf97538027a813a4fb0bd6980a7fea.jpg",
+        "smallPic": "img/product/size2/m212cf97538027a813a4fb0bd6980a7fea.jpg"
+      },
+      {
+        "rgid": 4,
+        "rid": 1,
+        "bigPic": "img/product/size4/m47fe3031a3df75ab5e6711ae2338c18f7.jpg",
+        "smallPic": "img/product/size2/m27fe3031a3df75ab5e6711ae2338c18f7.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间名字-->
+<mapper namespace="com.ssm.Dao.CategoryMapper">
+        <resultMap id="category" type="com.ssm.Pojo.Category">
+            <result property="id" column="cid"/>
+            <result property="name" column="cname"/>
+
+        </resultMap>
+
+
+        <select id="category_list" resultMap="category">
+              SELECT * FROM tab_category  ORDER BY cid ASC
+        </select>
+</mapper>

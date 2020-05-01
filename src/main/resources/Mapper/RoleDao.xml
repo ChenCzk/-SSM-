@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ssm.Dao.RoleDao">
+
+    <resultMap id="RoleMap" type="com.ssm.Pojo.Role">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="sex" column="sex"/>
+    </resultMap>
+
+    <select id="select" resultMap="RoleMap" >
+        select id,name,sex from My_role where id = #{id}
+    </select>
+    <insert id="insertRole" >
+        insert into My_role values(#{id},#{name},#{sex})
+    </insert>
+</mapper>

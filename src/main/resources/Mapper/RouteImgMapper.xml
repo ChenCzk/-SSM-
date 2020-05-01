@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ssm.Dao.RouteImgMapper">
+
+    <resultMap id="routeImgMap" type="com.ssm.Pojo.RouteImg">
+
+    </resultMap>
+
+    <select id="RouteImgMapper" parameterType="Integer" resultMap="routeImgMap">
+        select * from tab_route_Img where rid = #{rid}
+    </select>
+</mapper>

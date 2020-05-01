@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间名字-->
+<mapper namespace="com.ssm.Dao.UserMapper">
+
+        <resultMap id="user" type="com.ssm.Pojo.User">
+
+        </resultMap>
+        <select id="findByuserName"  resultMap="user">
+              SELECT * FROM tab_user WHERE username =  #{username};
+        </select>
+
+        <insert id="setUser" parameterType="com.ssm.Pojo.User" >
+              INSERT INTO tab_user(uid,username,password,name,birthday,sex,telephone,email,status,code)
+                            values (null ,#{username},#{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code});
+        </insert>
+
+        <update id="updateToStatus" parameterType="com.ssm.Pojo.User" >
+            UPDATE tab_user SET status = 'Y' WHERE code = #{code}
+        </update>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 命名空间名字-->
+<mapper namespace="com.ssm.Dao.RouteMapper">
+    <resultMap id="route" type="com.ssm.Pojo.Route">
+
+    </resultMap>
+
+    <resultMap id="routeMap" type="com.ssm.Pojo.Route">
+        <result column="rid" property="rid"/>
+        <result column="rname" property="rname"/>
+        <result column="price" property="price"/>
+        <result column="routeIntroduce" property="routeIntroduce"/>
+        <result column="rflag" property="rflag"/>
+        <result column="rdate" property="isThemeTour"/>
+        <result column="count" property="count"/>
+        <result column="cid" property="cid"/>
+        <result column="rimage" property="rimage"/>
+        <result column="sid" property="sid"/>
+        <result column="sourceId" property="sourceId"/>
+
+        <collection property="seller" column="sid" select="com.ssm.Dao.SellerMapper.getSeller"/>
+
+        <collection property="routeImgList" column="rid" select="com.ssm.Dao.RouteImgMapper.RouteImgMapper"/>
+    </resultMap>
+
+
+    <select id="findRoute" resultMap="route" parameterType="Integer">
+        SELECT * FROM tab_route WHERE cid = #{arg0} limit #{arg1}, #{arg2};
+    </select>
+
+    <select id="count" resultType="Integer" parameterType="Integer">
+        select count(*) from tab_route where cid =#{i};
+    </select>
+
+    <select id="searchRoute" resultMap="route" >
+           SELECT * FROM tab_route WHERE rname LIKE  #{rname}  LIMIT #{start}, #{limit};
+    </select>
+
+    <select id="countSearch" parameterType="String" resultType="Integer" >
+           SELECT COUNT(*) FROM tab_route WHERE rname LIKE CONCAT('%',#{rname},'%') ;
+
+    </select>
+
+    <select id="findRouteByRid" parameterType="Integer" resultMap="routeMap">
+          SELECT * FROM tab_route where rid= #{rid}
+
+    </select>
+
+</mapper>
