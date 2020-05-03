@@ -6,25 +6,15 @@ import com.ssm.Pojo.ResultInfo;
 import com.ssm.Pojo.User;
 import com.ssm.Service.UserService;
 import com.ssm.Utils.CheckCodeUtils;
-import org.apache.commons.beanutils.BeanUtils;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
-import java.util.Map;
 
 /*
  * 注册控制器

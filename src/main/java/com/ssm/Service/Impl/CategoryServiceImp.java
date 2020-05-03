@@ -39,7 +39,7 @@ public class CategoryServiceImp implements CategoryService {
             };
             Set<ZSetOperations.TypedTuple> category_redis = (Set<ZSetOperations.TypedTuple>) redisTemplate.execute(sessionCallback);
 
-            // redis��keyΪCategory�ֶ�
+
             if (category_redis == null || category_redis.size() == 0) {
                 list = mapper.category_list();
                 for (Category cc : list) {

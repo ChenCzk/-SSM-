@@ -18,6 +18,9 @@ import java.io.IOException;
 @RequestMapping("VCode")
 public class VCodeController {
 
+
+
+
     /*
      * 生成验证码，发送给前端，同时存入session域中，以便校验。
      * */

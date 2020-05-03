@@ -143,7 +143,7 @@
 				$('#registerForm').submit(function () {
 					if (checkUserName()) {
 						// 采用异步（Ajax）发送数据到servlet检验并保存
-						$.post("reg/register", $(this).serialize(), function (data) {  //没有找到registerServlet，会默认跑到src/main/webapp/目录下寻找
+						$.post("reg/register.do", $(this).serialize(), function (data) {
 							// 第一个参数:  目标servlet。
 							// 第二个参数： 发送的表单数据序列化，this 代表$('#registerForm')。
 							// 第三个参数： 回调函数，data 为servlet返回的数据（flag:校验是否成功，errorMessage:错误信息，data:数据）
@@ -154,8 +154,8 @@
 							} else {
 								// 校验失败
 								// 提示错误信息
-								$("#errorMsg").html(data.errorMessage);
-								$("#img1").attr('src', "./VCode/SetVCode?" + new Date().getTime()) ;
+								alert(data.errorMessage);
+								$("#img1").attr('src', "./VCode/SetVCode.do?" + new Date().getTime()) ;
 
 							}
 
@@ -262,11 +262,11 @@
     							</td>
     							<td class="td_right check">
     								<input type="text" id="check" name="check" class="check">
-    								<img id="img1" src="VCode/SetVCode" height="32px" alt="" onclick="changeCheckCode(this)">
+    								<img id="img1" src="./VCode/SetVCode.do" height="32px" alt="" onclick="changeCheckCode(this)">
 									<script type="text/javascript">
 										//图片点击事件
 										function changeCheckCode(img) {
-											img.src="VCode/SetVCode?"+new Date().getTime();
+											img.src="./VCode/SetVCode.do?"+new Date().getTime();
                                         }
 									</script>
     							</td>

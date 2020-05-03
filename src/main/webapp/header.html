@@ -2,21 +2,23 @@
 <script src="js/getParameter.js"></script>
 <script>
     $(function () {
-        $.get("user/findUser", {}, function (data) {
+        $.get("./login/findUser.do", {}, function (data) {
             //{uid:1,name:'李四'}
             if (data != null) {
-                var msg = "欢迎回来，" + data.name;
+                var msg = "欢迎回来，" + data.user.name;
                 $("#span_username").html(msg);
             }
         });
 
         // 显示分类条
-        $.post("category/find",{}, function (data1) {
+        $.post("./category/getCategory.do",{}, function (data) {
             var str = '<li class="nav-active"><a href="index.html">首页</a></li>';
             // {id name}
+            var data1 = data.categoryList;
+
             //遍历data
-            for (var i = 0; i < data1.length; i++) {//data[i].name data[i].chtml <li><a href="undefined">+data[i].name+</a></li>
-                var st = '<li><a href='+data1[i].id+'"route_list.html?cid=">' + data1[i].name + '</a></li>';
+            for (var i = 0; i < data1.length; i++) {
+                var st = '<li><a href="route_list.html?cid='+data1[i].id+'">' + data1[i].name + '</a></li>';
                 str += st;
             }
             str += '<li><a href="favoriterank.html">收藏排行榜</a></li>';

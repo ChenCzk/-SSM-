@@ -18,15 +18,13 @@
             // search 属性是一个可读可写的字符串，可设置或返回当前 URL 的查询部分（问号 ? 之后的部分）。
             var search = location.search; // ?id=5
             var cid = search.split("=")[1]; //获取id值
-            var rname = getParameter("rname"); // 获取rname值
-            alert(cid);
-            alert(rname);
             load(cid);
+
         });
 
         function load(cid, currentPage) {
             // 发送ajax请求，发送cid，请求route/find
-            $.get("route/find", {cid: cid, currentPage: currentPage}, function (p) {
+            $.get("route/Cat.do", {cid: cid, currentPage: currentPage}, function (p) {
 
                 // 分页工具条数展示
                 //1.1 展示总页码和总记录数
@@ -91,6 +89,8 @@
                 lis += li_next + li_last;
                 $("#ul").html(lis);
 
+
+
                 //1.3 列表数据展示
                 var route_lis = "";
                 for (var i = 0; i < p.list.length; i++) {
@@ -112,11 +112,10 @@
                         '</p>\n' +
                         ''+route.rid+'' +
                         '<p><a href=' +
-                        '"route_detail.html?route=>查看详情</a></p>\n</div>\n</li>';
+                        '"route_detail.html?route=">查看详情</a></p>\n</div>\n</li>';
                     route_lis += route_li;
                 }
                 $("#route").html(route_lis);
-
                 window.scrollTo(0,0)
             })
         }

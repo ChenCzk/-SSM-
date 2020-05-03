@@ -79,15 +79,15 @@
 			/*表单提交*/
 			$("#loginForm").submit(function () {
 				if(checkUserName()){
-					$.post("./login/login",$(this).serialize(),function (data) {
-						if (data.flag){
+					$.post("./login/login.do",$(this).serialize(),function (data) {
+						if (data.resultInfo.flag){
 							// 登陆成功
 							// 跳转到登陆成功页面
 							window.location.href="index.html"
 						}else {
 							// 登陆失败
-							alert(data.errorMessage);
-							$("img").attr("src","VCode/SetVCode?"+new Date().getTime());
+							alert(data.resultInfo.errorMessage);
+							$("#img1").attr("src","./VCode/SetVCode.do?"+new Date().getTime());
 							//1,1验证码错误
 							//1,2密码错误
 							//1.3账户未激活
@@ -131,11 +131,11 @@
         			<input name="password" type="text" placeholder="请输入密码" autocomplete="off">
         			<div class="verify">
 						<input name="check" type="text" placeholder="请输入验证码" autocomplete="off">
-						<span><img src="VCode/SetVCode" alt="" onclick="changeCheckCode(this)"></span>
+						<span><img id="img1" src="./VCode/SetVCode.do" alt="" onclick="changeCheckCode(this)"></span>
 						<script type="text/javascript">
 							//图片点击事件
 							function changeCheckCode(img) {
-								img.src="VCode/SetVCode?"+new Date().getTime();
+								img.src="./VCode/SetVCode.do?"+new Date().getTime();
 							}
 						</script>
 					</div>
