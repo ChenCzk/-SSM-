@@ -22,14 +22,13 @@ public class CategoryServiceImp implements CategoryService {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    Set<ZSetOperations.TypedTuple> set1 = new HashSet<>();
+    Set<ZSetOperations.TypedTuple> set = new HashSet<>();
 
     public List<Category> category_list() {
-
         List<Category> list = null;
-
         try {
 
+            // 查询key为Category的键
             SessionCallback sessionCallback = new SessionCallback() {
                 @Override
                 public Object execute(RedisOperations ops) throws DataAccessException {
@@ -37,18 +36,21 @@ public class CategoryServiceImp implements CategoryService {
                     return category_redis;
                 }
             };
+
+            // 执行查询
             Set<ZSetOperations.TypedTuple> category_redis = (Set<ZSetOperations.TypedTuple>) redisTemplate.execute(sessionCallback);
 
-
+            // 如果查询结果为空，也就Redis没有数据
             if (category_redis == null || category_redis.size() == 0) {
-                list = mapper.category_list();
+                list = mapper.category_list(); //去数据库拿
                 for (Category cc : list) {
                     ZSetOperations.TypedTuple typedTuple = new DefaultTypedTuple(cc.getName(), Double.valueOf(cc.getId()));
-                    set1.add(typedTuple);
-                    redisTemplate.opsForZSet().add("Category", set1);
+                    set.add(typedTuple);
+                    redisTemplate.opsForZSet().add("Category", set);// 然后存入redis，下次访问去redis拿就行了
                 }
 
             } else {
+                // redis 有数据,返回redis 的数据
                 list = new ArrayList<>();
                 for (ZSetOperations.TypedTuple s : category_redis) {
                     Category cat = new Category();
